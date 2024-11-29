@@ -37,19 +37,19 @@ jobs:
         id: download-wasm32-unknown-unknown
         run: rustup target add wasm32-unknown-unknown
 
+      - name: Install cargo-binstall
+        uses: cargo-bins/cargo-binstall@main
+
       - name: Install Trunk
         id: install-trunk
-        run: cargo install trunk
+        run: cargo binstall trunk
 
       - name: Build webapp
         id: build-webapp
         run: trunk build --release -M
 
-      - name: Restore cache
-        uses: actions/cache@v3
-
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v2
+        uses: actions/upload-pages-artifact@v4
         with:
           path: ./dist
 
@@ -63,4 +63,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v3
+        uses: actions/deploy-pages@v4
