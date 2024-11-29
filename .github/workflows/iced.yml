@@ -33,6 +33,10 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v4
 
+      - name: Download wasm32-unknown-unknown toolchain
+        id: download-wasm32-unknown-unknown
+        run: rustup target add wasm32-unknown-unknown
+
       - name: Install Trunk
         id: install-trunk
         run: cargo install trunk
