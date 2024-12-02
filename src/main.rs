@@ -2,10 +2,14 @@ use iced::{
     theme::Theme,
     widget::{
         button, checkbox, column, container, container::Style, image, keyed_column, pane_grid, row,
-        scrollable, slider, text, text_input, toggler, Button, Column, Space, Text,
+        scrollable, slider, text, text_input, toggler, Button, Column, Space, Text, Image,
     },
     Border, Center, Color, ContentFit, Element, Fill, Length, Shrink, Task,
 };
+
+use iced::advanced::image::{Handle};
+
+const TRASH_IMG: &[u8] = include_bytes!("../assets/trash.png");
 
 #[derive(Debug, Clone)]
 struct Evaluacion {
@@ -93,12 +97,14 @@ impl Application {
             evaluaciones.push(
                 container(row![
                     container(
-                        Button::new(image("assets/trash.png").content_fit(ContentFit::Fill))
-                            .on_press(Message::EliminarEvaluacionPresionado(i.id))
-                            .style(button::danger)
-                            .padding(15)
-                            .height(66)
-                            .width(66),
+                        Button::new(
+                            Image::new(Handle::from_bytes(TRASH_IMG)).content_fit(ContentFit::Fill)
+                        )
+                        .on_press(Message::EliminarEvaluacionPresionado(i.id))
+                        .style(button::danger)
+                        .padding(15)
+                        .height(66)
+                        .width(66),
                     )
                     .style(container::bordered_box),
                     container(text(nombre).size(20))
