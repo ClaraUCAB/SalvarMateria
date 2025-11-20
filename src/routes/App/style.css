@@ -1,0 +1,158 @@
+* {
+    font-size: 20px;
+}
+
+#contenedor-app {
+    padding: 5% 10% 5% 10%;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    flex: 1;
+}
+
+#resumen-notas {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#nota-acumulada, #porcentaje-evaluado {
+  max-width: 50%;
+}
+
+#contenedor-evaluaciones {
+    background-color: var(--ctp-mocha-surface0);
+    border: solid var(--ctp-mocha-blue);
+    /*display: flex;*/
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-self: stretch;
+    flex: 1;
+    gap: 20px;
+    padding: 20px;
+    overflow: scroll;
+    overflow-x: hidden;
+}
+
+#controles {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 20px;
+}
+
+input.control {
+    background-color: var(--ctp-mocha-surface0);
+    border: solid var(--ctp-mocha-overlay0);
+    color: var(--ctp-mocha-text);
+}
+
+input.control:hover {
+    background-color: var(--ctp-mocha-surface0);
+    border: solid var(--ctp-mocha-lavender);
+    color: var(--ctp-mocha-text);
+    outline: none;
+}
+
+input.control:active,
+input.control:focus {
+    background-color: var(--ctp-mocha-surface0);
+    border: solid var(--ctp-mocha-blue);
+    color: var(--ctp-mocha-text);
+    outline: none;
+}
+
+input.control-submit {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 125%;
+    background-color: var(--ctp-mocha-blue);
+    border-color: var(--ctp-mocha-blue);
+    outline: none;
+}
+
+input.control-submit:active,
+input.control-submit:focus,
+input.control-submit:hover {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 125%;
+    background-color: var(--ctp-mocha-teal);
+    border-color: var(--ctp-mocha-teal);
+    outline: none;
+    cursor: pointer;
+}
+
+input.control {
+    padding-left: 10px;
+    padding-right: 10px;
+    height: 100%;
+    flex: 1;
+}
+
+.red {
+    color: var(--ctp-mocha-red);
+}
+
+.green {
+    color: var(--ctp-mocha-green);
+}
+
+.data-row {
+    display: flex;
+    background-color: var(--ctp-mocha-surface1);
+    overflow: hidden;
+    width: 100%;
+    color: var(--ctp-mocha-text);
+    border: 1px solid var(--ctp-mocha-overlay0);
+}
+
+.delete-cell {
+    background-color: var(--ctp-mocha-red);
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.data-content {
+    display: flex;
+    flex-grow: 1;
+}
+
+.data-cell {
+    padding: 12px 15px;
+    display: flex;
+    align-items: center;
+    border-left: 1px solid var(--ctp-mocha-overlay0);
+    align-self: stretch;
+}
+
+.nombre-cell {
+    flex-grow: 1; /* Description takes up most space */
+}
+
+.percentage-cell {
+    width: 5%;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.points-cell {
+    /* Removed 'width: 80px;' */
+    flex-grow: 0; /* By default, let it grow only as needed */
+    flex-shrink: 0; /* Prevent it from shrinking more than its content */
+    justify-content: center; /* Center text in this cell */
+    white-space: nowrap; /* Prevent text from wrapping initially */
+    min-width: 80px; /* Ensure it starts at a reasonable size like the percentage cell */
+}
+
+@media only screen and (max-width: 600px) {
+    html, body {
+        width: 600px;
+        height: 150vh;
+        margin: 0;
+    }
+}
