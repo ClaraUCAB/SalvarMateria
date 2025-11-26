@@ -1,5 +1,5 @@
 * {
-    font-size: 20px;
+    font-size: 1.25rem;
 }
 
 #contenedor-app {
@@ -11,22 +11,22 @@
 }
 
 #resumen-notas {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
 }
 
 #nota-acumulada, #porcentaje-evaluado {
-  max-width: 50%;
+    max-width: 50%;
 }
 
 #contenedor-evaluaciones {
+    display: flex;
     background-color: var(--ctp-mocha-surface0);
     border: solid var(--ctp-mocha-blue);
     /*display: flex;*/
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    flex-flow: column nowrap;
+    align-items: stretch;
     align-self: stretch;
     flex: 1;
     gap: 20px;
@@ -64,9 +64,8 @@ input.control:focus {
 }
 
 input.control-submit {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 125%;
+    padding: 5px 10px;
+    height: 100%;
     background-color: var(--ctp-mocha-blue);
     border-color: var(--ctp-mocha-blue);
     outline: none;
@@ -75,9 +74,8 @@ input.control-submit {
 input.control-submit:active,
 input.control-submit:focus,
 input.control-submit:hover {
-    padding-left: 10px;
-    padding-right: 10px;
-    height: 125%;
+    padding: 5px 10px;
+    height: 100%;
     background-color: var(--ctp-mocha-teal);
     border-color: var(--ctp-mocha-teal);
     outline: none;
@@ -85,8 +83,7 @@ input.control-submit:hover {
 }
 
 input.control {
-    padding-left: 10px;
-    padding-right: 10px;
+    padding: 5px 10px;
     height: 100%;
     flex: 1;
 }

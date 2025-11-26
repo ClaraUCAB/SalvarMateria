@@ -1,10 +1,21 @@
 <script lang="ts">
     import { onMount } from 'svelte';
+    import { flip } from 'svelte/animate';
+    import { slide } from 'svelte/transition';
+
+    import Evaluacion from '$lib/components/Evaluacion/Evaluacion.svelte';
 
     let controlsForm;
     let nombreEvaluacionInput;
     let valorEvaluacionInput;
     let puntajeInput;
+
+    interface IEvaluacion {
+        nombre: string;
+        valor: number;
+        puntaje: number;
+        dynamic?: boolean;
+    }
     
     onMount(() => {
         if (valorEvaluacionInput && puntajeInput) {
@@ -17,37 +28,30 @@
         }
     });
 
-    class Evaluacion {
-        nombre: string;
-        valor: number;
-        puntaje: number | undefined;
-        
-        constructor(nombre: string, valor: number, puntaje?: number | undefined) {
-            this.nombre = nombre;
-            this.valor = valor;
-            this.puntaje = puntaje;
-        }
-    }
-
-    let evaluaciones: Evaluacion[] = $state([]);
+    let evaluaciones: IEvaluacion[] = $state<IEvaluacion[]>([]);
 
     let notaReal: number = $state(0);
     let notaRedondeada: number = $state(0);
-    let porcentajeEvaluado: number = $state(0);
+    let porcentajeEvaluado: number = $derived(
+        evaluaciones.reduce((total, ev) => total + ev.valor, 0)
+    );
 
     function addEvaluacion() {
-        let nombre: string = nombreEvaluacionInput.value;
-        let valor: number = valorEvaluacionInput.value;
-        let puntaje: number | undefined = puntajeInput.value ? puntajeInput.value : undefined;
+        const nombre: string = nombreEvaluacionInput.value;
+        const valor: number = parseInt(valorEvaluacionInput.value);
+        const puntaje: number = parseInt(puntajeInput.value) || 10;
+        const dynamic: boolean = puntajeInput.value.length === 0;
 
         // Reset form
-        /*nombreEvaluacionInput.value = '';
-        valorEvaluacionInput.value = '';
-        puntajeInput.value = '';*/
-        controlsForm.reset();
-        nombreEvaluacionInput.focus();
+        controlsForm.reset()
 
-        evaluaciones.push(new Evaluacion(nombre, valor, puntaje));
+        evaluaciones.push({nombre, valor, puntaje, dynamic});
+    }
+
+    function swap() {
+        let temp = evaluaciones[0];
+        evaluaciones[0] = evaluaciones[evaluaciones.length-1];
+        evaluaciones[evaluaciones.length-1] = temp;
     }
 </script>
 
@@ -65,9 +69,12 @@
     </header>
 
     <section id="contenedor-evaluaciones">
-        {#each evaluaciones as evaluacion}
-            <p><strong>{evaluacion.nombre}:</strong> {evaluacion.puntaje} / {evaluacion.valor}</p>
+        {#each evaluaciones as evaluacion, index (evaluacion.nombre)}
+            <div data-index={index} animate:flip={{duration: 200}} transition:slide>
+                <Evaluacion {...evaluacion} />
+            </div>
         {/each}
+        <button onclick={swap}>Swap</button>
     </section>
 
     <footer>

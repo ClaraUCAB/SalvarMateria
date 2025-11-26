@@ -1,0 +1,67 @@
+* {
+    font-size: 1.35rem;
+}
+
+.evaluacion {
+    box-sizing: border-box;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    width: 100%;
+    border: solid 2px blue;
+    padding: 5px;
+}
+
+.evaluacion .delete-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px green;
+    min-width: 0;
+    padding: 5px;
+}
+
+.evaluacion .nombre {
+    display: flex;
+    align-items: center;
+    border: solid 2px green;
+    flex: 1 10 0%;
+    width: 100%;
+    padding: 5px;
+}
+
+.evaluacion .valor {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: solid 2px green;
+    min-width: 0;
+    width: 6%;
+    max-width: 6%;
+    padding: 5px;
+}
+
+#puntaje-contenedor {
+    display: flex;
+    flex-basis: auto;
+    flex-flow: column nowrap;
+    border: solid 2px green;
+    align-items: stretch;
+    justify-content: center;
+    padding: 5px;
+    min-width: 0;
+    width: 6%;
+    max-width: 6%;
+}
+
+.evaluacion .puntaje {
+    box-sizing: border-box;
+    border: solid 2px red;
+    width: 100%;
+    padding: 5px;
+}
+
+.slider {
+    font-size: 1.15rem;
+}
+
