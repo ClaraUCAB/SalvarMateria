@@ -1,5 +1,5 @@
 <script lang="ts">
-    let {nombre, valor, puntaje, dynamic} = $props();
+    let {nombre, valor, puntaje = $bindable(), dynamic} = $props<string, number, number, boolean | undefined>();
 </script>
 
 <div class="evaluacion">
@@ -10,13 +10,18 @@
     <span class="nombre">{nombre}</span>
     
     <!-- Valor -->
-    <span class="valor"><span style="border: solid 2px white;">{valor || "00"}%</span></span>
+    <span class="valor"><span>{valor < 10 ? "0" + valor : valor}%</span></span>
     
     <!-- Puntaje -->
     <div id="puntaje-contenedor">
-        <span class="puntaje">{puntaje} pts</span>
         {#if dynamic === true}
-            <input type="range" min="0" max="20" bind:value={puntaje}>
+            <div class="puntaje">
+                <input class="puntaje-input" type="number" min=0 max=20 bind:value={puntaje}>
+                <span> pts</span>
+            </div>
+            <!-- <input type="range" min="0" max="20" bind:value={puntaje}> -->
+        {:else}
+            <span class="puntaje">{puntaje < 10 ? "0" + puntaje : puntaje} pts</span>
         {/if}
     </div>
 </div>

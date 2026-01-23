@@ -8,15 +8,24 @@
     flex-flow: row nowrap;
     justify-content: center;
     width: 100%;
-    border: solid 2px blue;
+/*    border: solid 2px blue;*/
     padding: 5px;
+    background-color: var(--ctp-mocha-overlay0);
+}
+
+.evaluacion .pos-controls {
+    display: flex;
+    flex-flow: column nowrap;
+    min-width: 0;
+    padding: 5px;
+/*    border: solid 2px green;*/
 }
 
 .evaluacion .delete-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 2px green;
+/*    border: solid 2px green;*/
     min-width: 0;
     padding: 5px;
 }
@@ -24,7 +33,7 @@
 .evaluacion .nombre {
     display: flex;
     align-items: center;
-    border: solid 2px green;
+/*    border: solid 2px green;*/
     flex: 1 10 0%;
     width: 100%;
     padding: 5px;
@@ -34,7 +43,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: solid 2px green;
+/*    border: solid 2px green;*/
     min-width: 0;
     width: 6%;
     max-width: 6%;
@@ -45,23 +54,27 @@
     display: flex;
     flex-basis: auto;
     flex-flow: column nowrap;
-    border: solid 2px green;
+/*    border: solid 2px green;*/
     align-items: stretch;
     justify-content: center;
     padding: 5px;
     min-width: 0;
-    width: 6%;
-    max-width: 6%;
+    width: 8%;
+    max-width: 8%;
 }
 
 .evaluacion .puntaje {
     box-sizing: border-box;
-    border: solid 2px red;
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: stretch;
+/*    border: solid 2px red;*/
     width: 100%;
     padding: 5px;
+    gap: 5px;
 }
 
 .slider {
     font-size: 1.15rem;
 }
-

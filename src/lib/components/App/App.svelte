@@ -5,10 +5,10 @@
 
     import Evaluacion from '$lib/components/Evaluacion/Evaluacion.svelte';
 
-    let controlsForm;
-    let nombreEvaluacionInput;
-    let valorEvaluacionInput;
-    let puntajeInput;
+    let controlsForm: HTMLFormElement;
+    let nombreEvaluacionInput: HTMLInputElement;
+    let valorEvaluacionInput: HTMLInputElement;
+    let puntajeInput: HTMLInputElement;
 
     interface IEvaluacion {
         nombre: string;
@@ -17,6 +17,11 @@
         dynamic?: boolean;
     }
     
+
+    function porcentajeDeNota(valor: number, puntaje: number, base: number = 20): number {
+        return ((puntaje / 20 * 100) * (valor / 100) * (base / 100));
+    }
+
     onMount(() => {
         if (valorEvaluacionInput && puntajeInput) {
             valorEvaluacionInput.addEventListener('keypress', (event) => {
@@ -30,13 +35,17 @@
 
     let evaluaciones: IEvaluacion[] = $state<IEvaluacion[]>([]);
 
-    let notaReal: number = $state(0);
-    let notaRedondeada: number = $state(0);
+    let notaReal: number = $derived((evaluaciones.reduce(
+        (total, ev) => total + porcentajeDeNota(ev.valor, ev.puntaje),
+    0)) || 0);
+    let notaRedondeada: number = $derived(Math.round(notaReal));
     let porcentajeEvaluado: number = $derived(
         evaluaciones.reduce((total, ev) => total + ev.valor, 0)
     );
 
     function addEvaluacion() {
+        console.log($state.snapshot(notaReal));
+
         const nombre: string = nombreEvaluacionInput.value;
         const valor: number = parseInt(valorEvaluacionInput.value);
         const puntaje: number = parseInt(puntajeInput.value) || 10;
@@ -48,6 +57,7 @@
         evaluaciones.push({nombre, valor, puntaje, dynamic});
     }
 
+    // TODO: Remove :p
     function swap() {
         let temp = evaluaciones[0];
         evaluaciones[0] = evaluaciones[evaluaciones.length-1];
@@ -59,7 +69,7 @@
 <main id="contenedor-app">
     <header id="resumen-notas">
         <div id="nota-acumulada">
-            Nota real: {notaReal} / 20
+            Nota real: {notaReal.toFixed(2)} / 20
             <br>
             Nota redondeada: {notaRedondeada} / 20
         </div>
@@ -71,10 +81,9 @@
     <section id="contenedor-evaluaciones">
         {#each evaluaciones as evaluacion, index (evaluacion.nombre)}
             <div data-index={index} animate:flip={{duration: 200}} transition:slide>
-                <Evaluacion {...evaluacion} />
+                <Evaluacion {...evaluacion} bind:puntaje={evaluacion.puntaje} />
             </div>
         {/each}
-        <button onclick={swap}>Swap</button>
     </section>
 
     <footer>
@@ -116,4 +125,3 @@
 
 <style src="./style.css">
 </style>
-
