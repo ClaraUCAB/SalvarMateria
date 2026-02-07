@@ -1,4 +1,5 @@
 # sv
+[![GitHub Pages](https://github.com/ClaraUCAB/SalvarMateria/actions/workflows/deploy.yml/badge.svg?branch=stable)](https://github.com/ClaraUCAB/SalvarMateria/actions/workflows/deploy.yml)
 
 Everything you need to build a Svelte project, powered by [`sv`](https://github.com/sveltejs/cli).
 
