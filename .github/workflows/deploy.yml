@@ -19,8 +19,8 @@ jobs:
 
       - name: build
         env:
-          BASE_PATH: '/${{ github.event.repository.name }}'
-        run: bun run build
+          BASE_PATH: '/${{ github.event.repository.name }}/SalvarMateria'
+        run: bun build
 
       - name: Upload Artifacts
         uses: actions/upload-pages-artifact@v3
