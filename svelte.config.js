@@ -11,7 +11,7 @@ const config = {
 	preprocess: [sveltePreprocess(), vitePreprocess()],
 
 	kit: {
-	    appDir: 'app',
+	    appDir: 'App',
 		adapter: adapter({
             pages: 'docs',
             assets: 'docs',
