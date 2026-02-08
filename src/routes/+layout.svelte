@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { base } from '$app/paths';
 	import favicon from '$lib/assets/favicon.svg';
 	import '$lib/components/App/style.css';
 

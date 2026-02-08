@@ -1,4 +1,3 @@
-//import adapter from 'svelte-adapter-bun';
 import adapter from '@sveltejs/adapter-static';
 import { sveltePreprocess } from 'svelte-preprocess';
 import { vitePreprocess } from '@sveltejs/vite-plugin-svelte';
@@ -10,12 +9,14 @@ const config = {
 	preprocess: [sveltePreprocess(), vitePreprocess()],
 
 	kit: {
-	    appDir: 'App',
+	    appDir: 'app',
 		adapter: adapter({
+            pages: 'docs',
+            assets: 'docs',
 			fallback: '404.html'
 		}),
 		paths: {
-			base: process.argv.includes('dev') ? '' : process.env.BASE_PATH,
+			base: process.argv.includes('dev') ? '' : '/SalvarMateria'
 		}
 	}
 };
