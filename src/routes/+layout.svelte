@@ -1,13 +1,15 @@
 <script lang="ts">
-	//import favicon from '$lib/assets/favicon.svg';
-	//import '$lib/components/App/style.css';
+    import { base } from '$app/paths';
+
+	const faviconPath = `${base}/favicon.svg`;
+	const globalCssPath = `${base}/global.css`;
 
 	let { children } = $props();
 </script>
 
 <svelte:head>
-	<link rel="icon" href="favicon.svg" />
-    <link rel="stylesheet" type="text/css" href="global.css">
+	<link rel="icon" href={faviconPath} />
+    <link rel="stylesheet" type="text/css" href={globalCssPath}>
 </svelte:head>
 
 {@render children()}
