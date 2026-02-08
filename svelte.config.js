@@ -20,5 +20,7 @@ const config = {
 	}
 };
 
+console.log(`[DEBUG] process.env.BASE_PATH: ${process.env.BASE_PATH}.`);
+
 
 export default config;
