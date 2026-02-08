@@ -1,9 +1,15 @@
+<script lang="ts">
+    import { base } from '$app/paths';
+    const global_css = `${base}/global.css`;
+</script>
+
 <!doctype html>
 <html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="stylesheet" type="text/css" href="../static/global.css">
+        <link rel="stylesheet" type="text/css" href="global.css">
+        <link rel="icon" href="favicon.svg" />
         <title>Salvar Materia</title>
 		%sveltekit.head%
 	</head>
