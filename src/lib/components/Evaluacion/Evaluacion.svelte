@@ -1,11 +1,24 @@
 <script lang="ts">
-    let {nombre, valor, puntaje = $bindable(), dynamic} = $props<string, number, number, boolean | undefined>();
+    let {nombre, valor, puntaje = $bindable(), dynamic, removeEvaluacion = $bindable(), moveUp = $bindable(), moveDown = $bindable()} = $props<string, number, number, boolean | undefined>();
+
+
 </script>
 
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <div class="evaluacion">
-    <!-- Icono -->
-    <span class="delete-icon">X</span>
-    
+    <div id="contenedor-controles">
+        <!-- Mover -->
+        <div id="contenedor-posicion">
+            <div class="up button" onclick={moveUp}></div>
+            <div class="down button" onclick={moveDown}></div>
+        </div>
+
+        <!-- Borrar -->
+        <button class="delete-icon" onclick={() => removeEvaluacion(nombre)}>
+            <i class="fa fa-trash-o"></i>
+        </button>
+    </div>
+
     <!-- Nombre -->
     <span class="nombre">{nombre}</span>
     
