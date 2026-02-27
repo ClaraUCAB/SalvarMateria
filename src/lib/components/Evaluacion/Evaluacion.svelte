@@ -3,8 +3,10 @@
 </script>
 
 <div class="evaluacion">
-    <!-- Icono -->
-    <span class="delete-icon">X</span>
+    <!-- Mover -->
+
+    <!-- Borrar -->
+    <button class="delete-icon" on:click={}>X</button>
     
     <!-- Nombre -->
     <span class="nombre">{nombre}</span>
