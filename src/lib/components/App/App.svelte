@@ -44,8 +44,6 @@
     );
 
     function addEvaluacion() {
-        console.log($state.snapshot(notaReal));
-
         const nombre: string = nombreEvaluacionInput.value;
         const valor: number = parseInt(valorEvaluacionInput.value);
         const puntaje: number = parseInt(puntajeInput.value) || 10;
@@ -57,11 +55,8 @@
         evaluaciones.push({nombre, valor, puntaje, dynamic});
     }
 
-    // TODO: Remove :p
-    function swap() {
-        let temp = evaluaciones[0];
-        evaluaciones[0] = evaluaciones[evaluaciones.length-1];
-        evaluaciones[evaluaciones.length-1] = temp;
+    function removeEvaluacion(nombre: string) {
+        evaluaciones = evaluaciones.filter(element => element.nombre != nombre);
     }
 </script>
 
@@ -81,7 +76,7 @@
     <section id="contenedor-evaluaciones">
         {#each evaluaciones as evaluacion, index (evaluacion.nombre)}
             <div data-index={index} animate:flip={{duration: 200}} transition:slide>
-                <Evaluacion {...evaluacion} bind:puntaje={evaluacion.puntaje} />
+                <Evaluacion {...evaluacion} bind:puntaje={evaluacion.puntaje} removeEvaluacion={removeEvaluacion} />
             </div>
         {/each}
     </section>

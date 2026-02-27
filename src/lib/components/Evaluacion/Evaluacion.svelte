@@ -1,12 +1,14 @@
 <script lang="ts">
-    let {nombre, valor, puntaje = $bindable(), dynamic} = $props<string, number, number, boolean | undefined>();
+    let {nombre, valor, puntaje = $bindable(), dynamic, removeEvaluacion = $bindable()} = $props<string, number, number, boolean | undefined>();
+
+
 </script>
 
 <div class="evaluacion">
     <!-- Mover -->
 
     <!-- Borrar -->
-    <button class="delete-icon" on:click={}>X</button>
+    <button class="delete-icon" onclick={() => removeEvaluacion(nombre)}>X</button>
     
     <!-- Nombre -->
     <span class="nombre">{nombre}</span>
