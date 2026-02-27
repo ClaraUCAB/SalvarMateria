@@ -8,32 +8,41 @@
     flex-flow: row nowrap;
     justify-content: center;
     width: 100%;
-/*    border: solid 2px blue;*/
+    /*    border: solid 2px blue;*/
     padding: 5px;
     background-color: var(--ctp-mocha-overlay0);
+    gap: 10px;
 }
 
-.evaluacion .pos-controls {
+#contenedor-controles {
+    display: flex;
+    flex-flow: row nowrap;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+#contenedor-posicion {
     display: flex;
     flex-flow: column nowrap;
-    min-width: 0;
-    padding: 5px;
-/*    border: solid 2px green;*/
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
 }
 
 .evaluacion .delete-icon {
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border: solid 2px green;*/
-    min-width: 0;
-    padding: 5px;
+    /*    border: solid 2px green;*/
+    padding: 10px;
+    background: var(--ctp-mocha-red);
 }
 
 .evaluacion .nombre {
     display: flex;
     align-items: center;
-/*    border: solid 2px green;*/
+    /*    border: solid 2px green;*/
     flex: 1 10 0%;
     width: 100%;
     padding: 5px;
@@ -43,7 +52,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-/*    border: solid 2px green;*/
+    /*    border: solid 2px green;*/
     min-width: 0;
     width: 6%;
     max-width: 6%;
@@ -54,7 +63,7 @@
     display: flex;
     flex-basis: auto;
     flex-flow: column nowrap;
-/*    border: solid 2px green;*/
+    /*    border: solid 2px green;*/
     align-items: stretch;
     justify-content: center;
     padding: 5px;
@@ -69,7 +78,7 @@
     flex-flow: row nowrap;
     justify-content: center;
     align-items: stretch;
-/*    border: solid 2px red;*/
+    /*    border: solid 2px red;*/
     width: 100%;
     padding: 5px;
     gap: 5px;
@@ -77,4 +86,30 @@
 
 .slider {
     font-size: 1.15rem;
+}
+
+.button {
+    height: 0;
+    width: 0;
+    cursor: pointer;
+
+    &.up {
+        border-bottom: 1.10rem solid var(--ctp-mocha-surface0);
+        border-left: 1.10rem solid transparent;
+        border-right: 1.10rem solid transparent;
+
+        &:hover {
+            border-bottom-color: black;
+        }
+    }
+
+    &.down {
+        border-top: 1.10rem solid var(--ctp-mocha-surface0);
+        border-left: 1.10rem solid transparent;
+        border-right: 1.10rem solid transparent;
+
+        &:hover {
+            border-top-color: black;
+        }
+    }
 }

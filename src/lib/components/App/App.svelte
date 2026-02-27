@@ -58,6 +58,16 @@
     function removeEvaluacion(nombre: string) {
         evaluaciones = evaluaciones.filter(element => element.nombre != nombre);
     }
+
+    function swapEvaluacion(i: number, j: number) {
+        // Ensure we're not out of bounds
+        if (i >= evaluaciones.length || j >= evaluaciones.length) return;
+        if (i < 0 || j < 0) return 0;
+
+        const temp = evaluaciones[i];
+        evaluaciones[i] = evaluaciones[j];
+        evaluaciones[j] = temp;
+    }
 </script>
 
 
@@ -76,7 +86,7 @@
     <section id="contenedor-evaluaciones">
         {#each evaluaciones as evaluacion, index (evaluacion.nombre)}
             <div data-index={index} animate:flip={{duration: 200}} transition:slide>
-                <Evaluacion {...evaluacion} bind:puntaje={evaluacion.puntaje} removeEvaluacion={removeEvaluacion} />
+                <Evaluacion {...evaluacion} bind:puntaje={evaluacion.puntaje} removeEvaluacion={removeEvaluacion} moveUp={() => swapEvaluacion(index, index-1)} moveDown={() => swapEvaluacion(index, index+1)} />
             </div>
         {/each}
     </section>
